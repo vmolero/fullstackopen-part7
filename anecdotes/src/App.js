@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Menu from './components/Menu'
 import AnecdoteList from './components/AnecdoteList'
@@ -45,14 +46,20 @@ const App = () => {
   }
 
   return (
-    <div>
+    <>
       <h1>Software anecdotes</h1>
-      <Menu />
-      <AnecdoteList anecdotes={anecdotes} />
-      <About />
-      <CreateNew addNew={addNew} />
+      <Router>
+        <Menu />
+        <Route
+          exact
+          path="/"
+          render={() => <AnecdoteList anecdotes={anecdotes} />}
+        />
+        <Route path="/create" render={() => <CreateNew addNew={addNew} />} />
+        <Route path="/about" render={() => <About />} />
+      </Router>
       <Footer />
-    </div>
+    </>
   )
 }
 
