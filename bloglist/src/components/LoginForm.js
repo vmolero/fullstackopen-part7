@@ -1,9 +1,9 @@
-import React from 'react';
-import { useField } from '../hooks';
+import React from 'react'
+import { useField } from '../hooks'
 
 const LoginForm = ({ handleLogin }) => {
-  const usernameInput = useField('text');
-  const passwordInput = useField('password');
+  const usernameInput = useField('text')
+  const passwordInput = useField('password')
   return (
     <form
       onSubmit={handleLogin({
@@ -11,9 +11,9 @@ const LoginForm = ({ handleLogin }) => {
         password: passwordInput.value
       })}
       onReset={evt => {
-        evt.preventDefault();
-        usernameInput.onReset();
-        passwordInput.onReset();
+        evt.preventDefault()
+        usernameInput.onReset()
+        passwordInput.onReset()
       }}
     >
       <div>
@@ -27,7 +27,7 @@ const LoginForm = ({ handleLogin }) => {
       <button type="submit">login</button>
       <button type="reset">reset</button>
     </form>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

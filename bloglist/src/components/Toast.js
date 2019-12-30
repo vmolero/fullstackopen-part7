@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
 const Toast = ({ type, message }) => {
-  let visible = '';
+  let visible = ''
 
   if (message.length === 0) {
-    visible = 'hidden';
+    visible = 'hidden'
   }
 
-  const toastClasses = ['toast', type, visible].join(' ');
+  const toastClasses = ['toast', type, visible].join(' ')
   return (
     <div className={toastClasses}>
       <span>{message}</span>
     </div>
-  );
-};
+  )
+}
 
-export default Toast;
+export default Toast

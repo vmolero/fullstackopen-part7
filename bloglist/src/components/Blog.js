@@ -1,13 +1,13 @@
-import React from 'react';
-import BlogInfo from './BlogInfo';
-import PropTypes from 'prop-types';
+import React from 'react'
+import BlogInfo from './BlogInfo'
+import PropTypes from 'prop-types'
 
 const Blog = ({ user, blog, likeHandler, deleteHandler }) => {
-  const infoReference = React.createRef();
+  const infoReference = React.createRef()
 
   const handleTitleClick = () => {
-    infoReference.current.toggleVisibility();
-  };
+    infoReference.current.toggleVisibility()
+  }
 
   return (
     <li className="blogListing">
@@ -24,8 +24,8 @@ const Blog = ({ user, blog, likeHandler, deleteHandler }) => {
         deleteHandler={deleteHandler}
       />
     </li>
-  );
-};
+  )
+}
 
 Blog.propTypes = {
   user: PropTypes.objectOf(PropTypes.string).isRequired,
@@ -34,6 +34,6 @@ Blog.propTypes = {
   }),
   likeHandler: PropTypes.func.isRequired,
   deleteHandler: PropTypes.func.isRequired
-};
+}
 
-export default Blog;
+export default Blog

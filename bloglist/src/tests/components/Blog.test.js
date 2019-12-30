@@ -1,7 +1,7 @@
-import React from 'react';
-import '../setupTests';
-import { render, fireEvent } from '@testing-library/react';
-import Blog from '../../components/Blog';
+import React from 'react'
+import '../setupTests'
+import { render, fireEvent } from '@testing-library/react'
+import Blog from '../../components/Blog'
 
 describe('Blog component', () => {
   test('renders default content: title + author whereas info is hidden', () => {
@@ -13,13 +13,13 @@ describe('Blog component', () => {
       user: {
         username: 'victor'
       }
-    };
+    }
 
-    const stubFn = () => {};
+    const stubFn = () => {}
 
     const user = {
       username: 'victor'
-    };
+    }
 
     const component = render(
       <Blog
@@ -28,14 +28,14 @@ describe('Blog component', () => {
         likeHandler={stubFn}
         deleteHandler={stubFn}
       />
-    );
+    )
 
-    const element = component.container.querySelector('div.header');
-    expect(element.textContent).toBe('Learning React written by Victor Molero');
+    const element = component.container.querySelector('div.header')
+    expect(element.textContent).toBe('Learning React written by Victor Molero')
 
-    const infoElement = component.container.querySelector('div.blogInfo');
-    expect(infoElement).toHaveStyle('display: none');
-  });
+    const infoElement = component.container.querySelector('div.blogInfo')
+    expect(infoElement).toHaveStyle('display: none')
+  })
 
   test('display blog info when header is clicked', () => {
     const blog = {
@@ -46,13 +46,13 @@ describe('Blog component', () => {
       user: {
         username: 'victor'
       }
-    };
+    }
 
-    const stubFn = () => {};
+    const stubFn = () => {}
 
     const user = {
       username: 'victor'
-    };
+    }
 
     const component = render(
       <Blog
@@ -61,17 +61,17 @@ describe('Blog component', () => {
         likeHandler={stubFn}
         deleteHandler={stubFn}
       />
-    );
+    )
 
-    const element = component.container.querySelector('div.header');
-    fireEvent.click(element);
+    const element = component.container.querySelector('div.header')
+    fireEvent.click(element)
 
-    const infoElement = component.container.querySelector('div.blogInfo');
-    expect(infoElement).toHaveStyle('display: block');
+    const infoElement = component.container.querySelector('div.blogInfo')
+    expect(infoElement).toHaveStyle('display: block')
 
-    const deleteButton = component.getByText('delete');
-    expect(deleteButton).toBeDefined();
-  });
+    const deleteButton = component.getByText('delete')
+    expect(deleteButton).toBeDefined()
+  })
 
   test('delete button is not shown if entry belongs to a different user', () => {
     const blog = {
@@ -82,13 +82,13 @@ describe('Blog component', () => {
       user: {
         username: 'victor'
       }
-    };
+    }
 
-    const stubFn = () => {};
+    const stubFn = () => {}
 
     const user = {
       username: 'daniel'
-    };
+    }
 
     const component = render(
       <Blog
@@ -97,16 +97,16 @@ describe('Blog component', () => {
         likeHandler={stubFn}
         deleteHandler={stubFn}
       />
-    );
-    const element = component.container.querySelector('div.header');
-    fireEvent.click(element);
-    let deleteButton;
+    )
+    const element = component.container.querySelector('div.header')
+    fireEvent.click(element)
+    let deleteButton
     try {
-      deleteButton = component.getByText('delete');
+      deleteButton = component.getByText('delete')
     } catch (err) {
       // do nothing
     } finally {
-      expect(deleteButton).not.toBeDefined();
+      expect(deleteButton).not.toBeDefined()
     }
-  });
-});
+  })
+})

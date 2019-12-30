@@ -1,10 +1,10 @@
-import React from 'react';
-import { useField } from '../hooks';
+import React from 'react'
+import { useField } from '../hooks'
 
 const CreateBlogForm = ({ handleCreateBlog }) => {
-  const authorInput = useField('text');
-  const titleInput = useField('text');
-  const urlInput = useField('text');
+  const authorInput = useField('text')
+  const titleInput = useField('text')
+  const urlInput = useField('text')
   return (
     <>
       <h2>Create blog</h2>
@@ -15,10 +15,10 @@ const CreateBlogForm = ({ handleCreateBlog }) => {
           url: urlInput.value
         })}
         onReset={evt => {
-          evt.preventDefault();
-          authorInput.onReset();
-          titleInput.onReset();
-          urlInput.onReset();
+          evt.preventDefault()
+          authorInput.onReset()
+          titleInput.onReset()
+          urlInput.onReset()
         }}
       >
         <div>
@@ -37,7 +37,7 @@ const CreateBlogForm = ({ handleCreateBlog }) => {
         <button type="reset">reset</button>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default CreateBlogForm;
+export default CreateBlogForm

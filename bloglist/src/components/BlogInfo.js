@@ -1,24 +1,24 @@
-import React, { useState, useImperativeHandle } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useImperativeHandle } from 'react'
+import PropTypes from 'prop-types'
 
 const BlogInfo = React.forwardRef(
   (
     { likes, url, ownerUsername, username, likeHandler, deleteHandler },
     ref
   ) => {
-    const canDelete = ownerUsername === username || ownerUsername === undefined;
-    const [visible, setVisible] = useState(false);
+    const canDelete = ownerUsername === username || ownerUsername === undefined
+    const [visible, setVisible] = useState(false)
     const toggleVisibility = () => {
-      setVisible(!visible);
-    };
+      setVisible(!visible)
+    }
 
     useImperativeHandle(ref, () => {
       return {
         toggleVisibility
-      };
-    });
+      }
+    })
 
-    const displayStyle = { display: visible ? 'block' : 'none' };
+    const displayStyle = { display: visible ? 'block' : 'none' }
     return (
       <div style={displayStyle} className="blogInfo">
         <p>
@@ -32,9 +32,9 @@ const BlogInfo = React.forwardRef(
         </p>
         {canDelete ? <button onClick={deleteHandler}>delete</button> : null}
       </div>
-    );
+    )
   }
-);
+)
 
 BlogInfo.propTypes = {
   likes: PropTypes.number.isRequired,
@@ -43,7 +43,7 @@ BlogInfo.propTypes = {
   username: PropTypes.string.isRequired,
   likeHandler: PropTypes.func.isRequired,
   deleteHandler: PropTypes.func.isRequired
-};
+}
 
-BlogInfo.displayName = 'BlogInfo';
-export default BlogInfo;
+BlogInfo.displayName = 'BlogInfo'
+export default BlogInfo

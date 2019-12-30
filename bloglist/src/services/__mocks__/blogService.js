@@ -241,6 +241,6 @@ const getAll = () => [
     },
     id: '5e01f9f6b694467b932abbf8'
   }
-];
+]
 
-export default { getAll };
+export default { getAll }
