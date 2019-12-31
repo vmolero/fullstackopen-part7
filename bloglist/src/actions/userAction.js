@@ -1,21 +1,29 @@
+import loginService from '../services/loginService'
+
 const type = {
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT'
 }
 
 const loginUserAction = credentials => {
-  // Login using service
   return async dispatch => {
+    const loggedUser = await loginService.login(credentials)
+    if (!('token' in loggedUser)) {
+      throw new Error('Token not found')
+    }
     dispatch({
       type: type.LOGIN,
-      credentials
+      credentials: loggedUser
     })
   }
 }
 
 const logoutUserAction = () => {
-  return {
-    type: type.LOGOUT
+  return async dispatch => {
+    await loginService.logout()
+    dispatch({
+      type: type.LOGOUT
+    })
   }
 }
 

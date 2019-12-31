@@ -1,9 +1,24 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { messageLevel, showMessageAction } from '../actions/messageAction'
+import { loginUserAction } from '../actions/userAction'
 import { useField } from '../hooks'
 
-const LoginForm = ({ handleLogin }) => {
+const LoginForm = ({ loginUserAction, showMessageAction }) => {
   const usernameInput = useField('text')
   const passwordInput = useField('password')
+
+  const handleLogin = ({ username, password }) => async event => {
+    event.preventDefault()
+    try {
+      await loginUserAction({ username, password })
+      showMessageAction('Successfully logged in as ' + username)
+    } catch (err) {
+      showMessageAction('Failed to log in', messageLevel.ERROR)
+    }
+  }
+
   return (
     <form
       onSubmit={handleLogin({
@@ -30,4 +45,7 @@ const LoginForm = ({ handleLogin }) => {
   )
 }
 
-export default LoginForm
+export default connect(null, {
+  loginUserAction,
+  showMessageAction
+})(LoginForm)

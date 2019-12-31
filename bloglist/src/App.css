@@ -8,6 +8,14 @@
 
 .success {
   padding: 1em;
+  background-color: lightblue;
+  border: 2px solid darkblue;
+  color: darkblue;
+  font-size: medium;
+}
+
+.success {
+  padding: 1em;
   background-color: lightgreen;
   border: 2px solid darkolivegreen;
   color: darkgreen;

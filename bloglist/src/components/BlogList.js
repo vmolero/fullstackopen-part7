@@ -1,7 +1,48 @@
-import React from 'react'
-import Blog from './Blog'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-const BlogList = ({ user, blogs, handleLike, handleDelete }) => {
+import Blog from './Blog'
+import {
+  likeBlogAction,
+  deleteBlogAction,
+  initializeBlogsAction
+} from '../actions/blogAction'
+import { messageLevel, showMessageAction } from '../actions/messageAction'
+
+const BlogList = ({
+  user,
+  blogs,
+  showMessageAction,
+  deleteBlogAction,
+  initializeBlogsAction,
+  likeBlogAction
+}) => {
+  const handleDelete = ({ blog, token }) => async () => {
+    try {
+      if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
+        await deleteBlogAction({ blog, token })
+        showMessageAction(`Blog entry ${blog.title} deleted`)
+      }
+      return
+    } catch (err) {
+      // do nothing
+    }
+    showMessageAction('Failed to delete blog', messageLevel.ERROR)
+  }
+
+  const handleLike = ({ blog, token }) => async () => {
+    try {
+      likeBlogAction({ blog, token })
+      showMessageAction(`Blog ${blog.title} written by ${blog.author} liked!`)
+    } catch (err) {
+      showMessageAction('Failed to update blog', 'error')
+    }
+  }
+
+  useEffect(() => {
+    user && initializeBlogsAction(user.token)
+  }, [user, initializeBlogsAction])
+
   return (
     <div>
       <h2>List</h2>
@@ -11,8 +52,8 @@ const BlogList = ({ user, blogs, handleLike, handleDelete }) => {
             key={blog.id}
             user={user}
             blog={blog}
-            likeHandler={handleLike(blog.id)}
-            deleteHandler={handleDelete(blog.id)}
+            likeHandler={handleLike({ blog, token: user.token })}
+            deleteHandler={handleDelete({ blog, token: user.token })}
           />
         ))}
       </ul>
@@ -20,4 +61,20 @@ const BlogList = ({ user, blogs, handleLike, handleDelete }) => {
   )
 }
 
-export default BlogList
+const mapStateToProps = state => {
+  return {
+    blogs: state.blogs,
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = {
+  likeBlogAction,
+  deleteBlogAction,
+  showMessageAction,
+  initializeBlogsAction
+}
+
+const ConnectedBlogList = connect(mapStateToProps, mapDispatchToProps)(BlogList)
+
+export default ConnectedBlogList

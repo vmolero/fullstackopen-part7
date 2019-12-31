@@ -1,12 +1,23 @@
-const type = {
+const messageType = {
   SHOW: 'SHOW',
   HIDE: 'HIDE'
 }
 
-const showMessageAction = ({ text, seconds }) => {
+const messageLevel = {
+  INFO: 'info',
+  SUCCESS: 'success',
+  ERROR: 'error'
+}
+
+const showMessageAction = (
+  text,
+  level = messageLevel.SUCCESS,
+  seconds = 10
+) => {
   return async dispatch => {
     dispatch({
-      type: type.SHOW,
+      type: messageType.SHOW,
+      level,
       text,
       timeoutId: setTimeout(() => dispatch(hideMessageAction()), seconds * 1000)
     })
@@ -15,9 +26,9 @@ const showMessageAction = ({ text, seconds }) => {
 
 const hideMessageAction = () => {
   return {
-    type: type.HIDE
+    type: messageType.HIDE
   }
 }
 
-export default type
-export { showMessageAction, hideMessageAction }
+export default messageType
+export { messageLevel, showMessageAction, hideMessageAction }

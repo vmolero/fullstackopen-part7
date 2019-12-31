@@ -2,6 +2,12 @@ import actionType from '../actions/blogAction'
 
 const initialState = []
 
+function sortByLikes(blogsCopy) {
+  blogsCopy.sort((blogA, blogB) =>
+    parseInt(blogA.likes) > parseInt(blogB.likes) ? -1 : 1
+  )
+}
+
 function createNewState(newElement, restOfElements) {
   const newState = [...restOfElements, newElement]
   return newState
@@ -14,14 +20,19 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionType.LIKE: {
       const filteredState = state.filter(blog => blog.id !== action.blog.id)
-      return createNewState(asObject(action.blog), filteredState)
+      const blogList = createNewState(asObject(action.blog), filteredState)
+      sortByLikes(blogList)
+      return blogList
     }
     case actionType.NEW: {
-      const newBlog = asObject(action.anecdote)
-      return createNewState(newBlog, state)
+      const newBlog = asObject(action.blog)
+      const blogList = createNewState(newBlog, state)
+      sortByLikes(blogList)
+      return blogList
     }
     case actionType.INIT: {
       const allBlogs = action.blogs.map(asObject)
+      sortByLikes(allBlogs)
       return allBlogs
     }
     case actionType.DELETE: {

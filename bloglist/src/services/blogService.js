@@ -8,10 +8,11 @@ const blogService = {
     })
     return response.data
   },
-  create: (blog, token) => {
-    return axios.post(baseUrl, blog, {
+  create: async (blog, token) => {
+    const response = await axios.post(baseUrl, blog, {
       headers: { Authorization: `Bearer ${token}` }
     })
+    return response.data
   },
   update: async (blog, token) => {
     const response = await axios.put(baseUrl + '/' + blog.id, blog, {

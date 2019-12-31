@@ -7,7 +7,7 @@ const type = {
   DELETE: 'DELETE'
 }
 
-const likeBlogAction = (blog, token) => {
+const likeBlogAction = ({ blog, token }) => {
   return async dispatch => {
     const blogToUpdate = { ...blog, likes: blog.likes + 1 }
     const updatedBlog = await blogService.update(blogToUpdate, token)
@@ -18,7 +18,7 @@ const likeBlogAction = (blog, token) => {
   }
 }
 
-const newBlogAction = (blog, token) => {
+const newBlogAction = ({ blog, token }) => {
   return async dispatch => {
     const newBlog = await blogService.create(blog, token)
     dispatch({
@@ -28,7 +28,7 @@ const newBlogAction = (blog, token) => {
   }
 }
 
-const deleteBlogAction = (blog, token) => {
+const deleteBlogAction = ({ blog, token }) => {
   return async dispatch => {
     await blogService.delete(blog, token)
     dispatch({
