@@ -1,15 +1,15 @@
 import React from 'react'
 import { waitForElement } from '@testing-library/react'
 import '../setupTests'
-import App from '../../App'
+import HomeView from '../../components/views/HomeView'
 import testHelper from '../testHelper'
 
 jest.mock('../../services/blogService')
 jest.mock('../../services/loginService')
 
-describe('<App />', () => {
+describe('<HomeView />', () => {
   test('if no user logged, blogs are not rendered', async () => {
-    const component = testHelper.renderWithRedux(<App />)
+    const component = testHelper.renderWithRedux(<HomeView />)
     const formElement = component.container.querySelector('form')
     expect(formElement).toBeDefined()
     const blogListingDiv = component.container.querySelector('.blogListings')
@@ -23,8 +23,9 @@ describe('<App />', () => {
       name: 'Tim Tester'
     }
 
-    localStorage.setItem('login', JSON.stringify(user))
-    const component = testHelper.renderWithRedux(<App />)
+    const component = testHelper.renderWithRedux(<HomeView />, {
+      initialState: { blogs: [], user, message: { type: '', text: '' } }
+    })
     await waitForElement(() =>
       component.container.querySelectorAll('.blogListing')
     )
