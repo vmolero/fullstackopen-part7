@@ -1,36 +1,34 @@
 import React from 'react'
-import { render, waitForElement } from '@testing-library/react'
-import App from '../App'
+import { waitForElement } from '@testing-library/react'
 import './setupTests'
+import App from '../App'
+import testHelper from './testHelper'
 
 jest.mock('../services/blogService')
+jest.mock('../services/loginService')
 
 describe('<App />', () => {
   test('if no user logged, blogs are not rendered', async () => {
-    const component = render(<App />)
-    component.rerender(<App />)
-    await waitForElement(() => component.getByText('login'))
+    const component = testHelper.renderWithRedux(<App />)
     const formElement = component.container.querySelector('form')
     expect(formElement).toBeDefined()
     const blogListingDiv = component.container.querySelector('.blogListings')
     expect(blogListingDiv).toBe(null)
   })
 
-  test('', async () => {
+  test('should display blog list for a logged user', async () => {
     const user = {
       username: 'tester',
       token: '1231231214',
-      name: 'Donald Tester'
+      name: 'Tim Tester'
     }
+
     localStorage.setItem('login', JSON.stringify(user))
-    const component = render(<App />)
-    component.rerender(<App />)
-
+    const component = testHelper.renderWithRedux(<App />)
     await waitForElement(() =>
-      component.container.querySelector('.blogListing')
+      component.container.querySelectorAll('.blogList')
     )
-
     const blogListingLis = component.container.querySelectorAll('.blogListing')
-    expect(blogListingLis.length).toBe(19)
+    expect(blogListingLis.length).toBe(2)
   })
 })
