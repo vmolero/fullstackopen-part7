@@ -23,3 +23,5 @@ Apply Prettier to format using single quote and no semicolons:
 ```bash
 $ node ./node_modules/prettier/bin-prettier.js --single-quote --semi=false --write "src/**/*.js"
 ```
+
+2. Fix integration tests
