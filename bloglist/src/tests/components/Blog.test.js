@@ -3,7 +3,7 @@ import '../setupTests'
 import { render, fireEvent } from '@testing-library/react'
 import Blog from '../../components/Blog'
 
-describe('Blog component', () => {
+describe('<Blog />', () => {
   test('renders default content: title + author whereas info is hidden', () => {
     const blog = {
       title: 'Learning React',

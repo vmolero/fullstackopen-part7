@@ -1,11 +1,11 @@
 import React from 'react'
 import { waitForElement } from '@testing-library/react'
-import './setupTests'
-import App from '../App'
-import testHelper from './testHelper'
+import '../setupTests'
+import App from '../../App'
+import testHelper from '../testHelper'
 
-jest.mock('../services/blogService')
-jest.mock('../services/loginService')
+jest.mock('../../services/blogService')
+jest.mock('../../services/loginService')
 
 describe('<App />', () => {
   test('if no user logged, blogs are not rendered', async () => {
@@ -26,7 +26,7 @@ describe('<App />', () => {
     localStorage.setItem('login', JSON.stringify(user))
     const component = testHelper.renderWithRedux(<App />)
     await waitForElement(() =>
-      component.container.querySelectorAll('.blogList')
+      component.container.querySelectorAll('.blogListing')
     )
     const blogListingLis = component.container.querySelectorAll('.blogListing')
     expect(blogListingLis.length).toBe(2)
