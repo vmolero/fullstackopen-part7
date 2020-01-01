@@ -5,6 +5,9 @@ import blogReducer from './reducers/blogReducer'
 import messageReducer from './reducers/messageReducer'
 import userReducer from './reducers/userReducer'
 
+/**
+ * Use combineReducers to keep blogs, message and user state
+ */
 const reducer = combineReducers({
   blogs: blogReducer,
   message: messageReducer,
