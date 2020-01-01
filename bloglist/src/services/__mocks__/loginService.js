@@ -1,4 +1,7 @@
 const login = async () => {
+  if (window.localStorage.getItem('login')) {
+    return Promise.resolve(JSON.parse(window.localStorage.getItem('login')))
+  }
   return Promise.resolve({
     token:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZpY3RvciIsImlkIjoiNWRmYmZkZTdjYWY0M2Q2NDg2MzhlNWYxIiwiaWF0IjoxNTc3MzE3MTk2fQ.e0NzeqC45h6FhqB_V3tc6rLTzpmCpA6pNeq5p9WROh0',
@@ -7,4 +10,4 @@ const login = async () => {
   })
 }
 
-export { login }
+export default { login }
