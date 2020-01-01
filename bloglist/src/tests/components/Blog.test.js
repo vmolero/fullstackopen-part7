@@ -69,8 +69,8 @@ describe('Blog component', () => {
     const infoElement = component.container.querySelector('div.blogInfo')
     expect(infoElement).toHaveStyle('display: block')
 
-    const deleteButton = component.getByText('delete')
-    expect(deleteButton).toBeDefined()
+    const deleteButton = component.getAllByText('delete')
+    expect(deleteButton.length).toBe(1)
   })
 
   test('delete button is not shown if entry belongs to a different user', () => {
