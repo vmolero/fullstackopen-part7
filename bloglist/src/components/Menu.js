@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Logout from './Logout'
 
 const Menu = () => {
   const padding = {
     paddingRight: 5
+  }
+  const inline = {
+    display: 'inline-block'
   }
   return (
     <div>
@@ -13,6 +17,7 @@ const Menu = () => {
       <Link style={padding} to="/users">
         Users
       </Link>
+      <Logout style={inline} />
     </div>
   )
 }

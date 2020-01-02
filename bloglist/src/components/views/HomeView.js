@@ -19,7 +19,6 @@ const HomeView = ({ user }) => {
       <Menu />
       <h1>BLogs</h1>
       <Toast />
-      <Logout />
       <Togglable buttonLabel={'Create new'}>
         <CreateBlogForm />
       </Togglable>

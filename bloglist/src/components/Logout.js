@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { logoutUserAction } from '../actions/loginAction'
 
-const Logout = ({ username, logoutUserAction, showMessageAction }) => {
+const Logout = ({ style, username, logoutUserAction, showMessageAction }) => {
   const handleLogout = async () => {
     try {
       await logoutUserAction()
@@ -15,7 +15,7 @@ const Logout = ({ username, logoutUserAction, showMessageAction }) => {
   }
 
   return (
-    <div>
+    <div style={style}>
       Logged in as {username}{' '}
       <button type="button" onClick={handleLogout}>
         logout

@@ -15,7 +15,6 @@ const BlogView = ({ user, blog }) => {
       <Menu />
       <h1>Blogs</h1>
       <Toast />
-      <Logout />
       <Blog user={user} blog={blog} />
     </>
   )

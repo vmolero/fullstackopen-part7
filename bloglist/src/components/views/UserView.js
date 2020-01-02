@@ -15,7 +15,6 @@ const UserView = ({ user, userId }) => {
       <Menu />
       <h1>Blogs</h1>
       <Toast />
-      <Logout />
       <UserBlogList userId={userId} />
     </>
   )
