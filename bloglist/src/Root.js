@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom'
 import HomeView from './components/views/HomeView'
 import UsersView from './components/views/UsersView'
 import LoginView from './components/views/LoginView'
@@ -39,6 +44,9 @@ const Root = ({ store }) => {
             path="/blogs/:id"
             render={({ match }) => <BlogView blogId={match.params.id} />}
           />
+          <Route path="*">
+            <Redirect to="/login" />
+          </Route>
         </Switch>
       </Router>
     </Provider>

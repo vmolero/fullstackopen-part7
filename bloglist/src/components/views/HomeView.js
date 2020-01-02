@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Logout from '../Logout'
 import BlogList from '../BlogList'
 import CreateBlogForm from '../CreateBlogForm'
 import Toast from '../Toast'
