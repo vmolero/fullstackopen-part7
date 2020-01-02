@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LoginForm from '../LoginForm'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Toast from '../Toast'
+import { loginUserAction } from '../../actions/loginAction'
 
-const LoginView = ({ user }) => {
-  console.log(user)
+const LoginView = ({ user, loginUserAction }) => {
+  useEffect(() => {
+    loginUserAction()
+  }, [loginUserAction])
   if (user) {
     return <Redirect to="/" />
   }
@@ -18,4 +21,6 @@ const LoginView = ({ user }) => {
   )
 }
 
-export default connect(state => ({ user: state.user }), null)(LoginView)
+export default connect(state => ({ user: state.user }), { loginUserAction })(
+  LoginView
+)

@@ -11,7 +11,6 @@ import Menu from '../Menu'
 
 const HomeView = ({ user }) => {
   if (!user) {
-    console.log('HomeView')
     return <Redirect to="/login" />
   }
 

@@ -2,11 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Logout from '../Logout'
-import UserList from '../UserList'
+import UserBlogList from '../UserBlogList'
 import Toast from '../Toast'
 import Menu from '../Menu'
 
-const UsersView = ({ user }) => {
+const UserView = ({ user, userId }) => {
   if (!user) {
     return <Redirect to="/login" />
   }
@@ -16,8 +16,7 @@ const UsersView = ({ user }) => {
       <h1>Blogs</h1>
       <Toast />
       <Logout />
-      <h2>Users</h2>
-      <UserList />
+      <UserBlogList userId={userId} />
     </>
   )
 }
@@ -27,4 +26,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {})(UsersView)
+export default connect(mapStateToProps, null)(UserView)
