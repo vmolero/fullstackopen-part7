@@ -5,6 +5,7 @@ import HomeView from './components/views/HomeView'
 import UsersView from './components/views/UsersView'
 import LoginView from './components/views/LoginView'
 import UserView from './components/views/UserView'
+import BlogView from './components/views/BlogView'
 
 import { loginUserAction } from './actions/loginAction'
 
@@ -32,6 +33,11 @@ const Root = ({ store }) => {
             exact
             path="/users/:id"
             render={({ match }) => <UserView userId={match.params.id} />}
+          />
+          <Route
+            exact
+            path="/blogs/:id"
+            render={({ match }) => <BlogView blogId={match.params.id} />}
           />
         </Switch>
       </Router>

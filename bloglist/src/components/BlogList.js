@@ -8,6 +8,7 @@ import {
   initializeBlogsAction
 } from '../actions/blogAction'
 import { messageLevel, showMessageAction } from '../actions/messageAction'
+import { Link } from 'react-router-dom'
 
 const BlogList = ({
   user,
@@ -48,13 +49,9 @@ const BlogList = ({
       <h2>List</h2>
       <ul className="blogListings">
         {blogs.map(blog => (
-          <Blog
-            key={blog.id}
-            user={user}
-            blog={blog}
-            likeHandler={handleLike({ blog, token: user.token })}
-            deleteHandler={handleDelete({ blog, token: user.token })}
-          />
+          <li key={blog.id} className="blogListing">
+            <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
+          </li>
         ))}
       </ul>
     </div>

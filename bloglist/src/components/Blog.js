@@ -1,21 +1,40 @@
 import React from 'react'
 import BlogInfo from './BlogInfo'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { likeBlogAction, deleteBlogAction } from '../actions/blogAction'
+import { showMessageAction } from '../actions/messageAction'
+import { Redirect } from 'react-router-dom'
 
-const Blog = ({ user, blog, likeHandler, deleteHandler }) => {
-  const infoReference = React.createRef()
-
-  const handleTitleClick = () => {
-    infoReference.current.toggleVisibility()
+const Blog = ({
+  user,
+  blog,
+  likeBlogAction,
+  deleteBlogAction,
+  showMessageAction
+}) => {
+  const likeHandler = () => {
+    likeBlogAction({ blog, token: user.token })
+    try {
+      likeBlogAction({ blog, token: user.token })
+      showMessageAction(`Blog ${blog.title} written by ${blog.author} liked!`)
+    } catch (err) {
+      showMessageAction('Failed to update blog', 'error')
+    }
   }
 
+  const deleteHandler = () => {
+    deleteBlogAction({ blog, token: user.token })
+  }
+  if (!blog) {
+    return <Redirect to="/" />
+  }
   return (
-    <li className="blogListing">
-      <div onClick={handleTitleClick} className="header">
+    <>
+      <div className="header">
         {blog.title} written by {blog.author || 'Anonymous'}
       </div>
       <BlogInfo
-        ref={infoReference}
         username={user.username}
         likes={blog.likes}
         url={blog.url}
@@ -23,7 +42,7 @@ const Blog = ({ user, blog, likeHandler, deleteHandler }) => {
         likeHandler={likeHandler}
         deleteHandler={deleteHandler}
       />
-    </li>
+    </>
   )
 }
 
@@ -32,8 +51,14 @@ Blog.propTypes = {
   blog: PropTypes.shape({
     title: PropTypes.string.isRequired
   }),
-  likeHandler: PropTypes.func.isRequired,
-  deleteHandler: PropTypes.func.isRequired
+  likeBlogAction: PropTypes.func.isRequired,
+  deleteBlogAction: PropTypes.func.isRequired,
+  showMessageAction: PropTypes.func.isRequired
 }
 
-export default Blog
+export { Blog }
+export default connect(null, {
+  likeBlogAction,
+  deleteBlogAction,
+  showMessageAction
+})(Blog)

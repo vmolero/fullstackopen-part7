@@ -1,7 +1,7 @@
 import React from 'react'
 import '../setupTests'
 import { render, fireEvent } from '@testing-library/react'
-import Blog from '../../components/Blog'
+import { Blog } from '../../components/Blog'
 
 describe('<Blog />', () => {
   test('renders default content: title + author whereas info is hidden', () => {
@@ -15,8 +15,6 @@ describe('<Blog />', () => {
       }
     }
 
-    const stubFn = () => {}
-
     const user = {
       username: 'victor'
     }
@@ -25,8 +23,9 @@ describe('<Blog />', () => {
       <Blog
         blog={blog}
         user={user}
-        likeHandler={stubFn}
-        deleteHandler={stubFn}
+        likeBlogAction={jest.fn()}
+        deleteBlogAction={jest.fn()}
+        showMessageAction={jest.fn()}
       />
     )
 
@@ -34,7 +33,7 @@ describe('<Blog />', () => {
     expect(element.textContent).toBe('Learning React written by Victor Molero')
 
     const infoElement = component.container.querySelector('div.blogInfo')
-    expect(infoElement).toHaveStyle('display: none')
+    expect(infoElement).toHaveStyle('display: block')
   })
 
   test('display blog info when header is clicked', () => {
@@ -58,8 +57,9 @@ describe('<Blog />', () => {
       <Blog
         blog={blog}
         user={user}
-        likeHandler={stubFn}
-        deleteHandler={stubFn}
+        likeBlogAction={stubFn}
+        deleteBlogAction={stubFn}
+        showMessageAction={stubFn}
       />
     )
 
@@ -84,7 +84,7 @@ describe('<Blog />', () => {
       }
     }
 
-    const stubFn = () => {}
+    const stubFn = jest.fn()
 
     const user = {
       username: 'daniel'
@@ -94,8 +94,9 @@ describe('<Blog />', () => {
       <Blog
         blog={blog}
         user={user}
-        likeHandler={stubFn}
-        deleteHandler={stubFn}
+        likeBlogAction={stubFn}
+        deleteBlogAction={stubFn}
+        showMessageAction={stubFn}
       />
     )
     const element = component.container.querySelector('div.header')
