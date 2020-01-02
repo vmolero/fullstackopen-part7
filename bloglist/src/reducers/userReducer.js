@@ -1,13 +1,11 @@
-import userAction from '../actions/userAction'
+import userActionType from '../actions/userAction'
 
-const initialState = null
+const initialState = []
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case userAction.LOGIN:
-      return Object.freeze(action.credentials)
-    case userAction.LOGOUT:
-      return null
+    case userActionType.GET_ALL:
+      return action.users.map(user => Object.freeze({ ...user }))
     default:
       return state
   }

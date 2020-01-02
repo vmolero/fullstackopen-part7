@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { messageLevel, showMessageAction } from '../actions/messageAction'
-import { logoutUserAction } from '../actions/userAction'
+import { logoutUserAction } from '../actions/loginAction'
 
 const Logout = ({ username, logoutUserAction, showMessageAction }) => {
   const handleLogout = async () => {

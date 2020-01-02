@@ -1,31 +1,18 @@
-import loginService from '../services/loginService'
+import userService from '../services/userService'
 
 const type = {
-  LOGIN: 'LOGIN',
-  LOGOUT: 'LOGOUT'
+  GET_ALL: 'GET_ALL'
 }
 
-const loginUserAction = credentials => {
+const getAllUserAction = () => {
   return async dispatch => {
-    const loggedUser = await loginService.login(credentials)
-    if (!('token' in loggedUser)) {
-      throw new Error('Token not found')
-    }
+    const users = await userService.getAll()
     dispatch({
-      type: type.LOGIN,
-      credentials: loggedUser
-    })
-  }
-}
-
-const logoutUserAction = () => {
-  return async dispatch => {
-    await loginService.logout()
-    dispatch({
-      type: type.LOGOUT
+      type: type.GET_ALL,
+      users
     })
   }
 }
 
 export default type
-export { loginUserAction, logoutUserAction }
+export { getAllUserAction }

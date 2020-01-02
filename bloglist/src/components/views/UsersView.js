@@ -1,23 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-// import Logout from '../Logout'
-// import UserList from '../UserList'
+import { Redirect } from 'react-router-dom'
+import Logout from '../Logout'
+import UserList from '../UserList'
+import Toast from '../Toast'
+import Menu from '../Menu'
 
 const UsersView = ({ user }) => {
-  console.log(user)
+  if (!user) {
+    return <Redirect to="/login" />
+  }
   return (
     <>
-      <div>Hi there</div>
+      <Menu />
+      <h1>Blogs</h1>
+      <Toast />
+      <Logout />
+      <UserList />
     </>
   )
 }
-
 const mapStateToProps = state => {
-  console.log(state)
   return {
-    user: { username: 'victor ' }
+    user: state.user
   }
 }
 
-export default withRouter(connect(mapStateToProps, null)(UsersView))
+export default connect(mapStateToProps, {})(UsersView)

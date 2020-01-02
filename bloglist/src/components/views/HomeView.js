@@ -1,29 +1,30 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-import LoginForm from '../LoginForm'
 import Logout from '../Logout'
 import BlogList from '../BlogList'
 import CreateBlogForm from '../CreateBlogForm'
 import Toast from '../Toast'
 import Togglable from '../Toggable'
+import { Redirect } from 'react-router-dom'
+import Menu from '../Menu'
 
 const HomeView = ({ user }) => {
+  if (!user) {
+    console.log('HomeView')
+    return <Redirect to="/login" />
+  }
+
   return (
     <>
-      <h1>Blogs</h1>
+      <Menu />
+      <h1>BLogs</h1>
       <Toast />
-      {user === null ? (
-        <LoginForm />
-      ) : (
-        <>
-          <Logout />
-          <Togglable buttonLabel={'Create new'}>
-            <CreateBlogForm />
-          </Togglable>
-          <BlogList />
-        </>
-      )}
+      <Logout />
+      <Togglable buttonLabel={'Create new'}>
+        <CreateBlogForm />
+      </Togglable>
+      <BlogList />
     </>
   )
 }

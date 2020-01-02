@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { messageLevel, showMessageAction } from '../actions/messageAction'
-import { loginUserAction } from '../actions/userAction'
+import { loginUserAction } from '../actions/loginAction'
 import { useField } from '../hooks'
 
 const LoginForm = ({ loginUserAction, showMessageAction }) => {
