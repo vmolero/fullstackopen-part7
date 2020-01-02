@@ -4,9 +4,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
-import blogReducer from '../reducers/blogReducer'
-import messageReducer from '../reducers/messageReducer'
-import userReducer from '../reducers/userReducer'
+import { BrowserRouter } from 'react-router-dom'
+import { reducer } from '../store'
 
 const initialState = {
   user: null,
@@ -19,12 +18,6 @@ const renderReact = jsxElement => {
   component.rerender(jsxElement)
   return component
 }
-
-const reducer = combineReducers({
-  blogs: blogReducer,
-  message: messageReducer,
-  user: userReducer
-})
 
 /**
  *
@@ -62,4 +55,11 @@ function renderWithRedux(
   }
 }
 
-export default { renderReact, renderWithRedux }
+function renderWithRouterAndRedux(ui, initialStateAndStore) {
+  return renderWithRedux(
+    <BrowserRouter>{ui}</BrowserRouter>,
+    initialStateAndStore
+  )
+}
+
+export default { renderReact, renderWithRedux, renderWithRouterAndRedux }
