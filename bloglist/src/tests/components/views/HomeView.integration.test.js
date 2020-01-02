@@ -1,15 +1,15 @@
 import React from 'react'
 import { waitForElement } from '@testing-library/react'
-import '../setupTests'
-import HomeView from '../../components/views/HomeView'
-import testHelper from '../testHelper'
+import '../../setupTests'
+import HomeView from '../../../components/views/HomeView'
+import testHelper from '../../testHelper'
 
-jest.mock('../../services/blogService')
-jest.mock('../../services/loginService')
+jest.mock('../../../services/blogService')
+jest.mock('../../../services/loginService')
 
 describe('<HomeView />', () => {
   test('if no user logged, blogs are not rendered', async () => {
-    const component = testHelper.renderWithRedux(<HomeView />)
+    const component = testHelper.renderWithRouterAndRedux(<HomeView />)
     const formElement = component.container.querySelector('form')
     expect(formElement).toBeDefined()
     const blogListingDiv = component.container.querySelector('.blogListings')
@@ -23,7 +23,7 @@ describe('<HomeView />', () => {
       name: 'Tim Tester'
     }
 
-    const component = testHelper.renderWithRedux(<HomeView />, {
+    const component = testHelper.renderWithRouterAndRedux(<HomeView />, {
       initialState: { blogs: [], user, message: { type: '', text: '' } }
     })
     await waitForElement(() =>
