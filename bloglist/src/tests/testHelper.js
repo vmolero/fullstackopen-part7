@@ -1,17 +1,11 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import { BrowserRouter } from 'react-router-dom'
 import { reducer } from '../store'
-
-const initialState = {
-  user: null,
-  message: { text: '', seconds: 0 },
-  blogs: []
-}
 
 const renderReact = jsxElement => {
   const component = render(jsxElement)

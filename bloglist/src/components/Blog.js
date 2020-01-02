@@ -3,7 +3,7 @@ import BlogInfo from './BlogInfo'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { likeBlogAction, deleteBlogAction } from '../actions/blogAction'
-import { showMessageAction } from '../actions/messageAction'
+import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { Redirect } from 'react-router-dom'
 
 const Blog = ({
@@ -19,12 +19,21 @@ const Blog = ({
       likeBlogAction({ blog, token: user.token })
       showMessageAction(`Blog ${blog.title} written by ${blog.author} liked!`)
     } catch (err) {
-      showMessageAction('Failed to update blog', 'error')
+      showMessageAction('Failed to update blog', messageLevel.ERROR)
     }
   }
 
-  const deleteHandler = () => {
-    deleteBlogAction({ blog, token: user.token })
+  const deleteHandler = async () => {
+    try {
+      if (window.confirm(`Remove blog ${blog.title} by ${blog.author}?`)) {
+        await deleteBlogAction({ blog, token: user.token })
+        showMessageAction(`Blog entry ${blog.title} deleted`)
+      }
+      return
+    } catch (err) {
+      // do nothing
+    }
+    showMessageAction('Failed to delete blog', messageLevel.ERROR)
   }
   if (!blog) {
     return <Redirect to="/" />
