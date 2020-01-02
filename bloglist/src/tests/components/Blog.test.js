@@ -12,7 +12,8 @@ describe('<Blog />', () => {
       likes: 7,
       user: {
         username: 'victor'
-      }
+      },
+      comments: []
     }
 
     const user = {
@@ -44,7 +45,8 @@ describe('<Blog />', () => {
       likes: 7,
       user: {
         username: 'victor'
-      }
+      },
+      comments: []
     }
 
     const stubFn = () => {}
@@ -81,7 +83,8 @@ describe('<Blog />', () => {
       likes: 7,
       user: {
         username: 'victor'
-      }
+      },
+      comments: []
     }
 
     const stubFn = jest.fn()
