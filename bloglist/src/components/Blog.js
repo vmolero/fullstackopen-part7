@@ -51,6 +51,16 @@ const Blog = ({
         likeHandler={likeHandler}
         deleteHandler={deleteHandler}
       />
+      {blog.comments.length ? (
+        <>
+          <h3>Comments</h3>
+          <ul>
+            {blog.comments.map((comment, index) => (
+              <li key={index}>{comment}</li>
+            ))}
+          </ul>
+        </>
+      ) : null}
     </>
   )
 }
