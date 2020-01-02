@@ -18,6 +18,7 @@ const asObject = blog => {
 }
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionType.ADD_COMMENT:
     case actionType.LIKE: {
       const filteredState = state.filter(blog => blog.id !== action.blog.id)
       const blogList = createNewState(asObject(action.blog), filteredState)

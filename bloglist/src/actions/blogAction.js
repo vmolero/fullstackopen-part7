@@ -4,7 +4,18 @@ const type = {
   INIT: 'INIT',
   LIKE: 'LIKE',
   NEW: 'NEW',
-  DELETE: 'DELETE'
+  DELETE: 'DELETE',
+  ADD_COMMENT: 'ADD_COMMENT'
+}
+
+const addCommentBlogAction = ({ id, comment, token }) => {
+  return async dispatch => {
+    const updatedBlog = await blogService.addComment(id, comment, token)
+    dispatch({
+      type: type.ADD_COMMENT,
+      blog: updatedBlog
+    })
+  }
 }
 
 const likeBlogAction = ({ blog, token }) => {
@@ -53,5 +64,6 @@ export {
   likeBlogAction,
   newBlogAction,
   deleteBlogAction,
-  initializeBlogsAction
+  initializeBlogsAction,
+  addCommentBlogAction
 }

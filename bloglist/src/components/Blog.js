@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { likeBlogAction, deleteBlogAction } from '../actions/blogAction'
 import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { Redirect } from 'react-router-dom'
+import AddBlogCommentForm from './AddBlogCommentForm'
 
 const Blog = ({
   user,
@@ -51,6 +52,7 @@ const Blog = ({
         likeHandler={likeHandler}
         deleteHandler={deleteHandler}
       />
+      <AddBlogCommentForm blog={blog} />
       {blog.comments.length ? (
         <>
           <h3>Comments</h3>

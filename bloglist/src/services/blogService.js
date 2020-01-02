@@ -24,6 +24,16 @@ const blogService = {
     return axios.delete(baseUrl + '/' + blog.id, {
       headers: { Authorization: `Bearer ${token}` }
     })
+  },
+  addComment: async (blogId, comment, token) => {
+    const response = await axios.post(
+      baseUrl + '/' + blogId + '/comments',
+      { id: blogId, comment },
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    return response.data
   }
 }
 
