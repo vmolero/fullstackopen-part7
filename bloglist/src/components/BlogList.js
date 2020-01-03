@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Table } from 'semantic-ui-react'
 
 import {
   likeBlogAction,
@@ -17,13 +18,20 @@ const BlogList = ({ user, blogs, initializeBlogsAction }) => {
   return (
     <div>
       <h2>List</h2>
-      <ul className="blogListings">
-        {blogs.map(blog => (
-          <li key={blog.id} className="blogListing">
-            <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <Table striped celled className="blogListings">
+        <Table.Body>
+          {blogs.map(blog => (
+            <Table.Row key={blog.id} className="blogListing">
+              <Table.Cell>
+                <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
+              </Table.Cell>
+              <Table.Cell>
+                {blog.user ? blog.user.name || blog.user.username : 'Admin'}
+              </Table.Cell>
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
     </div>
   )
 }

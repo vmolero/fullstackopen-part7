@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useField } from '../hooks'
 import { newBlogAction } from '../actions/blogAction'
 import { messageLevel, showMessageAction } from '../actions/messageAction'
+import { Form, Button } from 'semantic-ui-react'
 
 const CreateBlogForm = ({ user, newBlogAction, showMessageAction }) => {
   const authorInput = useField('text')
@@ -35,7 +36,7 @@ const CreateBlogForm = ({ user, newBlogAction, showMessageAction }) => {
   return (
     <>
       <h2>Create blog</h2>
-      <form
+      <Form
         onSubmit={handleCreateBlog({
           author: authorInput.value,
           title: titleInput.value,
@@ -47,21 +48,21 @@ const CreateBlogForm = ({ user, newBlogAction, showMessageAction }) => {
           resetFields()
         }}
       >
-        <div>
-          author
+        <Form.Field>
+          <label htmlFor="author">Author</label>
           <input name="author" {...authorInput} />
-        </div>
-        <div>
-          title
+        </Form.Field>
+        <Form.Field>
+          <label htmlFor="title">Title</label>
           <input name="title" {...titleInput} />
-        </div>
-        <div>
-          url
+        </Form.Field>
+        <Form.Field>
+          <label htmlFor="url">Url</label>
           <input name="url" {...urlInput} />
-        </div>
-        <button type="submit">Create</button>
-        <button type="reset">reset</button>
-      </form>
+        </Form.Field>
+        <Button type="submit">Create</Button>
+        <Button type="reset">reset</Button>
+      </Form>
     </>
   )
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useField } from '../hooks'
 import { addCommentBlogAction } from '../actions/blogAction'
 import { messageLevel, showMessageAction } from '../actions/messageAction'
+import { Button, Form } from 'semantic-ui-react'
 
 const AddBlogCommentForm = ({
   blog,
@@ -33,17 +34,17 @@ const AddBlogCommentForm = ({
 
   return (
     <>
-      <form
+      <Form
         onSubmit={handleAddComment({
           id: blog.id,
           comment: commentInput.value
         })}
       >
-        <div>
+        <Form.Field>
           <input name="author" {...commentInput} />
-        </div>
-        <button type="submit">Add comment</button>
-      </form>
+        </Form.Field>
+        <Button type="submit">Add comment</Button>
+      </Form>
     </>
   )
 }

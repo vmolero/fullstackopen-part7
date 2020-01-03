@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Form, Button } from 'semantic-ui-react'
 
 import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { loginUserAction } from '../actions/loginAction'
@@ -20,28 +21,22 @@ const LoginForm = ({ loginUserAction, showMessageAction }) => {
   }
 
   return (
-    <form
+    <Form
       onSubmit={handleLogin({
         username: usernameInput.value,
         password: passwordInput.value
       })}
-      onReset={evt => {
-        evt.preventDefault()
-        usernameInput.onReset()
-        passwordInput.onReset()
-      }}
     >
-      <div>
-        username
+      <Form.Field>
+        <label htmlFor="Username">Username</label>
         <input name="Username" {...usernameInput} />
-      </div>
-      <div>
-        password
+      </Form.Field>
+      <Form.Field>
+        <label htmlFor="Password">Password</label>
         <input name="Password" {...passwordInput} />
-      </div>
-      <button type="submit">login</button>
-      <button type="reset">reset</button>
-    </form>
+      </Form.Field>
+      <Button type="submit">login</Button>
+    </Form>
   )
 }
 

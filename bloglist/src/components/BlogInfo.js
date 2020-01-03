@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'semantic-ui-react'
 
 const BlogInfo = ({
   likes,
@@ -16,12 +17,12 @@ const BlogInfo = ({
         <a href={url}>{url}</a>
       </p>
       <p>
-        {likes} likes <button onClick={likeHandler}>like</button>
+        {likes} likes <Button onClick={likeHandler}>Like</Button>
       </p>
       <p>
         added by <span>{ownerUsername}</span>
       </p>
-      {canDelete ? <button onClick={deleteHandler}>delete</button> : null}
+      {canDelete ? <Button onClick={deleteHandler}>Delete</Button> : null}
     </div>
   )
 }

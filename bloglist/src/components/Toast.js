@@ -1,18 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Message } from 'semantic-ui-react'
+import { messageLevel } from '../actions/messageAction'
 
 const Toast = ({ level, text }) => {
-  let visible = ''
-
-  if (text.length === 0) {
-    visible = 'hidden'
-  }
-
-  const toastClasses = ['toast', level, visible].join(' ')
   return (
-    <div className={toastClasses}>
-      <span>{text}</span>
-    </div>
+    <Message
+      hidden={text.length === 0}
+      positive={level === messageLevel.SUCCESS}
+      error={level === messageLevel.ERROR}
+      info={level === messageLevel.INFO}
+    >
+      <p>{text}</p>
+    </Message>
   )
 }
 

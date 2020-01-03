@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Menu as SMenu } from 'semantic-ui-react'
 import Logout from './Logout'
 
 const Menu = () => {
@@ -10,15 +11,19 @@ const Menu = () => {
     display: 'inline-block'
   }
   return (
-    <div>
-      <Link style={padding} to="/">
-        Home
-      </Link>
-      <Link style={padding} to="/users">
-        Users
-      </Link>
+    <SMenu>
+      <SMenu.Item>
+        <Link style={padding} to="/">
+          Home
+        </Link>
+      </SMenu.Item>
+      <SMenu.Item>
+        <Link style={padding} to="/users">
+          Users
+        </Link>
+      </SMenu.Item>
       <Logout style={inline} />
-    </div>
+    </SMenu>
   )
 }
 

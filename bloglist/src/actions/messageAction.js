@@ -5,7 +5,7 @@ const messageType = {
 
 const messageLevel = {
   INFO: 'info',
-  SUCCESS: 'success',
+  SUCCESS: 'positive',
   ERROR: 'error'
 }
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { logoutUserAction } from '../actions/loginAction'
+import { Button } from 'semantic-ui-react'
 
 const Logout = ({ style, username, logoutUserAction, showMessageAction }) => {
   const handleLogout = async () => {
@@ -17,9 +18,9 @@ const Logout = ({ style, username, logoutUserAction, showMessageAction }) => {
   return (
     <div style={style}>
       Logged in as {username}{' '}
-      <button type="button" onClick={handleLogout}>
+      <Button type="button" onClick={handleLogout}>
         logout
-      </button>
+      </Button>
     </div>
   )
 }
