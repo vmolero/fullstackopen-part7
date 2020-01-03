@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { logoutUserAction } from '../actions/loginAction'
@@ -33,6 +34,12 @@ const Logout = ({ username, logoutUserAction, showMessageAction }) => {
       </Button>
     </Div>
   )
+}
+
+Logout.propTypes = {
+  username: PropTypes.string.isRequired,
+  logoutUserAction: PropTypes.func.isRequired,
+  showMessageAction: PropTypes.func.isRequired
 }
 
 export default connect(state => ({ username: state.user.username }), {

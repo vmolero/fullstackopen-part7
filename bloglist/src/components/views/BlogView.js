@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import Blog from '../Blog'
 import Header from '../Header'
@@ -23,6 +24,11 @@ const mapStateToProps = (state, { blogId }) => {
     blog,
     user: state.user
   }
+}
+
+BlogView.propTypes = {
+  user: PropTypes.object.isRequired,
+  blog: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, null)(BlogView)

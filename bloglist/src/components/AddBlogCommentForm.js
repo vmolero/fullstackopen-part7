@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { useField } from '../hooks'
 import { addCommentBlogAction } from '../actions/blogAction'
 import { messageLevel, showMessageAction } from '../actions/messageAction'
@@ -47,6 +48,19 @@ const AddBlogCommentForm = ({
       </Form>
     </>
   )
+}
+
+AddBlogCommentForm.propTypes = {
+  user: PropTypes.objectOf(PropTypes.string).isRequired,
+  blog: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    comments: PropTypes.arrayOf(PropTypes.string)
+  }),
+  addCommentBlogAction: PropTypes.func.isRequired,
+  showMessageAction: PropTypes.func.isRequired
 }
 
 export default connect(

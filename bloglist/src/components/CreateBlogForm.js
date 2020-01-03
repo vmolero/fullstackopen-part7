@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { useField } from '../hooks'
 import { newBlogAction } from '../actions/blogAction'
 import { messageLevel, showMessageAction } from '../actions/messageAction'
@@ -65,6 +66,12 @@ const CreateBlogForm = ({ user, newBlogAction, showMessageAction }) => {
       </Form>
     </>
   )
+}
+
+CreateBlogForm.propTypes = {
+  user: PropTypes.objectOf(PropTypes.string).isRequired,
+  newBlogAction: PropTypes.func.isRequired,
+  showMessageAction: PropTypes.func.isRequired
 }
 
 export default connect(

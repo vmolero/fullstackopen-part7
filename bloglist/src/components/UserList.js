@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+
 import { getAllUserAction } from '../actions/userAction'
 import { Link } from 'react-router-dom'
 import { Table } from 'semantic-ui-react'
@@ -34,6 +36,15 @@ const UserList = ({ users, getAllUserAction }) => {
 }
 
 const mapStateToProps = state => ({ users: state.users })
+
+UserList.propTypes = {
+  user: PropTypes.objectOf(PropTypes.string).isRequired,
+  users: PropTypes.arrayOf(PropTypes.object).isRequired,
+  blog: PropTypes.shape({
+    title: PropTypes.string.isRequired
+  }),
+  getAllUserAction: PropTypes.func.isRequired
+}
 
 export { UserList }
 export default connect(mapStateToProps, { getAllUserAction })(UserList)

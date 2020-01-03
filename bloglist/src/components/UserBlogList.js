@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 const BlogList = ({ blogs, user }) => {
   return (
@@ -22,6 +23,11 @@ const mapStateToProps = (state, { userId }) => {
     blogs: state.blogs.filter(blog => hasUser(blog) && blog.user.id === userId),
     user: state.users.find(user => user.id === userId)
   }
+}
+
+BlogList.propTypes = {
+  user: PropTypes.object,
+  blogs: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 const ConnectedBlogList = connect(mapStateToProps, null)(BlogList)

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
 const Togglable = ({ buttonLabel, children }) => {
   const [visible, setVisible] = useState(false)
@@ -24,6 +25,11 @@ const Togglable = ({ buttonLabel, children }) => {
       <div style={showWhenVisible}>{children}</div>
     </div>
   )
+}
+
+Togglable.propTypes = {
+  buttonLabel: PropTypes.string.isRequired,
+  children: PropTypes.object
 }
 
 export default Togglable

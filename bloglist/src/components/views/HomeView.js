@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import BlogList from '../BlogList'
 import CreateBlogForm from '../CreateBlogForm'
@@ -26,6 +27,10 @@ const HomeView = ({ user }) => {
       <StyledBlogList />
     </>
   )
+}
+
+HomeView.propTypes = {
+  user: PropTypes.object
 }
 
 export default connect(state => ({ user: state.user }), null)(HomeView)

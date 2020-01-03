@@ -69,7 +69,12 @@ const Blog = ({
 Blog.propTypes = {
   user: PropTypes.objectOf(PropTypes.string).isRequired,
   blog: PropTypes.shape({
-    title: PropTypes.string.isRequired
+    author: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    comments: PropTypes.arrayOf(PropTypes.string),
+    likes: PropTypes.number,
+    user: PropTypes.object
   }),
   likeBlogAction: PropTypes.func.isRequired,
   deleteBlogAction: PropTypes.func.isRequired,

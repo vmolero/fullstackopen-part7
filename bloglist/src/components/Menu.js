@@ -10,9 +10,7 @@ const Menu = () => {
     padding: 0px;
     margin: 0px 4px !important;
   `
-  const StyledLogout = styled(Logout)`
-    float: ${props => (props.right ? 'right' : 'none')};
-  `
+
   const handleItemClick = name => () => setActiveItem(name)
   return (
     <StyledMenu>
@@ -35,7 +33,7 @@ const Menu = () => {
         Users
       </SMenu.Item>
       <SMenu.Item position="right">
-        <StyledLogout />
+        <Logout />
       </SMenu.Item>
     </StyledMenu>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import Toast from './Toast'
 import Menu from './Menu'
@@ -13,6 +14,14 @@ const Header = ({ user }) => {
       <Toast />
     </>
   )
+}
+
+Header.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    token: PropTypes.string.isRequired
+  })
 }
 
 const mapStateToProps = state => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Form, Button } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
 import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { loginUserAction } from '../actions/loginAction'
@@ -46,6 +47,11 @@ const LoginForm = ({ loginUserAction, showMessageAction }) => {
       <Button type="submit">login</Button>
     </Form>
   )
+}
+
+LoginForm.propTypes = {
+  loginUserAction: PropTypes.func.isRequired,
+  showMessageAction: PropTypes.func.isRequired
 }
 
 export default connect(null, {

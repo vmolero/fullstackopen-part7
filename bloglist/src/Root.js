@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
 import HomeView from './components/views/HomeView'
 import UsersView from './components/views/UsersView'
 import LoginView from './components/views/LoginView'
@@ -57,6 +59,10 @@ const Root = ({ store }) => {
       </Provider>
     </StyledContainer>
   )
+}
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired
 }
 
 export default Root
