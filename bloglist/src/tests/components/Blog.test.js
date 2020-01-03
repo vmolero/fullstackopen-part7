@@ -1,7 +1,8 @@
 import React from 'react'
 import '../setupTests'
-import { render, fireEvent } from '@testing-library/react'
-import { Blog } from '../../components/Blog'
+import { fireEvent } from '@testing-library/react'
+import Blog from '../../components/Blog'
+import testHelper from '../testHelper'
 
 describe('<Blog />', () => {
   test('renders default content: title + author whereas info is hidden', () => {
@@ -20,14 +21,20 @@ describe('<Blog />', () => {
       username: 'victor'
     }
 
-    const component = render(
+    const state = {
+      blogs: [blog],
+      user
+    }
+
+    const component = testHelper.renderWithRedux(
       <Blog
         blog={blog}
         user={user}
         likeBlogAction={jest.fn()}
         deleteBlogAction={jest.fn()}
         showMessageAction={jest.fn()}
-      />
+      />,
+      { initialState: state }
     )
 
     const element = component.container.querySelector('div.header')
@@ -55,14 +62,20 @@ describe('<Blog />', () => {
       username: 'victor'
     }
 
-    const component = render(
+    const state = {
+      blogs: [blog],
+      user
+    }
+
+    const component = testHelper.renderWithRedux(
       <Blog
         blog={blog}
         user={user}
         likeBlogAction={stubFn}
         deleteBlogAction={stubFn}
         showMessageAction={stubFn}
-      />
+      />,
+      { initialState: state }
     )
 
     const element = component.container.querySelector('div.header')
@@ -93,14 +106,20 @@ describe('<Blog />', () => {
       username: 'daniel'
     }
 
-    const component = render(
+    const state = {
+      blogs: [blog],
+      user
+    }
+
+    const component = testHelper.renderWithRedux(
       <Blog
         blog={blog}
         user={user}
         likeBlogAction={stubFn}
         deleteBlogAction={stubFn}
         showMessageAction={stubFn}
-      />
+      />,
+      { initialState: state }
     )
     const element = component.container.querySelector('div.header')
     fireEvent.click(element)
