@@ -84,7 +84,7 @@ describe('<Blog />', () => {
     const infoElement = component.container.querySelector('div.blogInfo')
     expect(infoElement).toHaveStyle('display: block')
 
-    const deleteButton = component.getAllByText('delete')
+    const deleteButton = component.getAllByText('Delete')
     expect(deleteButton.length).toBe(1)
   })
 
