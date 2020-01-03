@@ -17,7 +17,7 @@ import UserView from './components/views/UserView'
 import BlogView from './components/views/BlogView'
 
 import { loginUserAction } from './actions/loginAction'
-
+import './Root.css'
 const Root = ({ store }) => {
   useEffect(() => {
     loginUserAction()
