@@ -2,9 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import Toast from '../Toast'
-import Menu from '../Menu'
 import Blog from '../Blog'
+import Header from '../Header'
 
 const BlogView = ({ user, blog }) => {
   if (!user) {
@@ -12,9 +11,7 @@ const BlogView = ({ user, blog }) => {
   }
   return (
     <>
-      <Menu />
-      <h1>Blogs</h1>
-      <Toast />
+      <Header />
       <Blog user={user} blog={blog} />
     </>
   )

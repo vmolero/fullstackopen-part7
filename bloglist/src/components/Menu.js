@@ -1,29 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu as SMenu } from 'semantic-ui-react'
+import styled from 'styled-components'
 import Logout from './Logout'
 
 const Menu = () => {
-  const padding = {
-    paddingRight: 5
-  }
-  const inline = {
-    display: 'inline-block'
-  }
+  const [activeItem, setActiveItem] = useState('home')
+  const StyledMenu = styled(SMenu)`
+    padding: 0px;
+    margin: 0px 4px !important;
+  `
+  const StyledLogout = styled(Logout)`
+    float: ${props => (props.right ? 'right' : 'none')};
+  `
+  const handleItemClick = name => () => setActiveItem(name)
   return (
-    <SMenu>
-      <SMenu.Item>
-        <Link style={padding} to="/">
-          Home
-        </Link>
+    <StyledMenu>
+      <SMenu.Item
+        as={Link}
+        to="/"
+        name="Home"
+        active={activeItem === 'home'}
+        onClick={handleItemClick('home')}
+      >
+        Home
       </SMenu.Item>
-      <SMenu.Item>
-        <Link style={padding} to="/users">
-          Users
-        </Link>
+      <SMenu.Item
+        as={Link}
+        to="/users"
+        name="Users"
+        active={activeItem === 'users'}
+        onClick={handleItemClick('users')}
+      >
+        Users
       </SMenu.Item>
-      <Logout style={inline} />
-    </SMenu>
+      <SMenu.Item position="right">
+        <StyledLogout />
+      </SMenu.Item>
+    </StyledMenu>
   )
 }
 

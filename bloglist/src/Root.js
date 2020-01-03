@@ -7,6 +7,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import { Container } from 'semantic-ui-react'
+import styled from 'styled-components'
 import HomeView from './components/views/HomeView'
 import UsersView from './components/views/UsersView'
 import LoginView from './components/views/LoginView'
@@ -20,8 +21,12 @@ const Root = ({ store }) => {
     loginUserAction()
   }, [])
 
+  const StyledContainer = styled(Container)`
+    padding: 8px;
+  `
+
   return (
-    <Container>
+    <StyledContainer>
       <Provider store={store}>
         <Router>
           <Switch>
@@ -50,7 +55,7 @@ const Root = ({ store }) => {
           </Switch>
         </Router>
       </Provider>
-    </Container>
+    </StyledContainer>
   )
 }
 

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getAllUserAction } from '../actions/userAction'
 import { Link } from 'react-router-dom'
+import { Table } from 'semantic-ui-react'
 
 const UserList = ({ users, getAllUserAction }) => {
   useEffect(() => {
@@ -10,24 +11,24 @@ const UserList = ({ users, getAllUserAction }) => {
 
   return (
     <div className="userList">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Blogs created</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table basic="very" celled collapsing>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>User</Table.HeaderCell>
+            <Table.HeaderCell>Blogs created</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
           {users.map(user => (
-            <tr key={user.id}>
-              <td>
+            <Table.Row key={user.id}>
+              <Table.Cell>
                 <Link to={`/users/${user.id}`}>{user.name}</Link>
-              </td>
-              <td>{user.blogs.length}</td>
-            </tr>
+              </Table.Cell>
+              <Table.Cell>{user.blogs.length}</Table.Cell>
+            </Table.Row>
           ))}
-        </tbody>
-      </table>
+        </Table.Body>
+      </Table>
     </div>
   )
 }

@@ -1,21 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { Header as SHeader } from 'semantic-ui-react'
+import styled from 'styled-components'
 import UserList from '../UserList'
-import Toast from '../Toast'
-import Menu from '../Menu'
+import Header from '../Header'
 
 const UsersView = ({ user }) => {
   if (!user) {
     return <Redirect to="/login" />
   }
+  const Div = styled.div`
+    margin-top: 48px;
+  `
   return (
     <>
-      <Menu />
-      <h1>Blogs</h1>
-      <Toast />
-      <h2>Users</h2>
-      <UserList />
+      <Header />
+      <Div>
+        <SHeader as="h2">Users</SHeader>
+        <UserList />
+      </Div>
     </>
   )
 }

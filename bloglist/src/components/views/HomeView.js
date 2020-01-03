@@ -1,27 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import BlogList from '../BlogList'
 import CreateBlogForm from '../CreateBlogForm'
-import Toast from '../Toast'
 import Togglable from '../Toggable'
 import { Redirect } from 'react-router-dom'
-import Menu from '../Menu'
+import Header from '../Header'
 
 const HomeView = ({ user }) => {
   if (!user) {
     return <Redirect to="/login" />
   }
 
+  const StyledBlogList = styled(BlogList)`
+    padding: 8px;
+  `
+
   return (
     <>
-      <Menu />
-      <h1>Blogs</h1>
-      <Toast />
+      <Header />
       <Togglable buttonLabel={'Create new'}>
         <CreateBlogForm />
       </Togglable>
-      <BlogList />
+      <StyledBlogList />
     </>
   )
 }

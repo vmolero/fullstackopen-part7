@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { logoutUserAction } from '../actions/loginAction'
@@ -15,13 +16,22 @@ const Logout = ({ style, username, logoutUserAction, showMessageAction }) => {
     }
   }
 
+  const Span = styled.span`
+    margin-right: 8px;
+  `
+  const Div = styled.div`
+    margin-right: 0px;
+    padding: 0px;
+  `
   return (
-    <div style={style}>
-      Logged in as {username}{' '}
+    <Div>
+      <Span>
+        Logged in as <strong>{username}</strong>
+      </Span>
       <Button type="button" onClick={handleLogout}>
-        logout
+        Logout
       </Button>
-    </div>
+    </Div>
   )
 }
 

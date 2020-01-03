@@ -28,12 +28,20 @@ const LoginForm = ({ loginUserAction, showMessageAction }) => {
       })}
     >
       <Form.Field>
-        <label htmlFor="Username">Username</label>
-        <input name="Username" {...usernameInput} />
-      </Form.Field>
-      <Form.Field>
-        <label htmlFor="Password">Password</label>
-        <input name="Password" {...passwordInput} />
+        <Form.Input
+          fluid
+          icon="user"
+          iconPosition="left"
+          placeholder="Username"
+          {...usernameInput}
+        />
+        <Form.Input
+          fluid
+          icon="lock"
+          iconPosition="left"
+          placeholder="Password"
+          {...passwordInput}
+        />
       </Form.Field>
       <Button type="submit">login</Button>
     </Form>
