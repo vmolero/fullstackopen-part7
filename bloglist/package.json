@@ -3,19 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.7.4",
+    "@babel/polyfill": "^7.7.0",
     "@svgr/webpack": "4.3.3",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
     "axios": "^0.19.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
-    "babel-loader": "8.0.6",
     "babel-plugin-named-asset-import": "^0.3.5",
     "babel-preset-react-app": "^9.1.0",
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
-    "css-loader": "3.2.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "eslint": "^6.6.0",
@@ -57,20 +55,17 @@
     "sass-loader": "8.0.0",
     "semantic-ui-react": "^0.88.2",
     "semver": "6.3.0",
-    "style-loader": "1.0.0",
     "styled-components": "^4.4.1",
     "terser-webpack-plugin": "2.2.1",
     "ts-pnp": "1.1.5",
     "url-loader": "2.3.0",
-    "webpack": "4.41.2",
-    "webpack-dev-server": "3.9.0",
     "webpack-manifest-plugin": "2.2.0",
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
+    "start": "NODE_ENV=development webpack-dev-server --mode=development",
+    "build": "NODE_ENV=development webpack --mode=development",
+    "test": "jest ./src/tests",
     "eslint": "eslint ."
   },
   "eslintConfig": {
@@ -90,12 +85,21 @@
   },
   "proxy": "http://localhost:3003",
   "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
     "deep-freeze": "0.0.1",
     "eslint": "^6.8.0",
     "eslint-plugin-jest": "^23.1.1",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   },
   "jest": {
     "roots": [
@@ -115,9 +119,7 @@
     ],
     "testEnvironment": "jest-environment-jsdom-fourteen",
     "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
