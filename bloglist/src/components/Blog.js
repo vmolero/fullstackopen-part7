@@ -14,10 +14,9 @@ const Blog = ({
   deleteBlogAction,
   showMessageAction
 }) => {
-  const likeHandler = () => {
-    likeBlogAction({ blog, token: user.token })
+  const likeHandler = async () => {
     try {
-      likeBlogAction({ blog, token: user.token })
+      await likeBlogAction({ blog, token: user.token })
       showMessageAction(`Blog ${blog.title} written by ${blog.author} liked!`)
     } catch (err) {
       showMessageAction('Failed to update blog', messageLevel.ERROR)

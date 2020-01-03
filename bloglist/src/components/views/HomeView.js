@@ -16,7 +16,7 @@ const HomeView = ({ user }) => {
   return (
     <>
       <Menu />
-      <h1>BLogs</h1>
+      <h1>Blogs</h1>
       <Toast />
       <Togglable buttonLabel={'Create new'}>
         <CreateBlogForm />
