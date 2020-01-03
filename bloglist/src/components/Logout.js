@@ -6,7 +6,7 @@ import { messageLevel, showMessageAction } from '../actions/messageAction'
 import { logoutUserAction } from '../actions/loginAction'
 import { Button } from 'semantic-ui-react'
 
-const Logout = ({ style, username, logoutUserAction, showMessageAction }) => {
+const Logout = ({ username, logoutUserAction, showMessageAction }) => {
   const handleLogout = async () => {
     try {
       await logoutUserAction()
