@@ -18,6 +18,7 @@ const Menu = () => {
         as={Link}
         to="/"
         name="Home"
+        data-cy="menu-home"
         active={activeItem === 'home'}
         onClick={handleItemClick('home')}
       >
@@ -27,6 +28,7 @@ const Menu = () => {
         as={Link}
         to="/users"
         name="Users"
+        data-cy="menu-users"
         active={activeItem === 'users'}
         onClick={handleItemClick('users')}
       >
