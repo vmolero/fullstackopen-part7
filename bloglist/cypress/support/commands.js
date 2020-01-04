@@ -20,6 +20,18 @@ Cypress.Commands.add('login', (username, password) => {
 Cypress.Commands.add('logout', () => {
   cy.get('[data-cy=logout-button]').click()
 })
+
+Cypress.Commands.add('resetDb', () => {
+  cy.request('POST', 'http://localhost:3000/api/testing/reset')
+})
+
+Cypress.Commands.add('provisionUser', (username, password, name) => {
+  cy.request('POST', 'http://localhost:3000/api/users', {
+    username,
+    password,
+    name
+  })
+})
 //
 //
 // -- This is a child command --
