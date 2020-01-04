@@ -29,7 +29,7 @@ const Logout = ({ username, logoutUserAction, showMessageAction }) => {
       <Span>
         Logged in as <strong>{username}</strong>
       </Span>
-      <Button type="button" onClick={handleLogout}>
+      <Button type="button" onClick={handleLogout} data-cy="logout-button">
         Logout
       </Button>
     </Div>

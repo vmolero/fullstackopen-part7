@@ -51,18 +51,22 @@ const CreateBlogForm = ({ user, newBlogAction, showMessageAction }) => {
       >
         <Form.Field>
           <label htmlFor="author">Author</label>
-          <input name="author" {...authorInput} />
+          <input data-cy="author-input" name="author" {...authorInput} />
         </Form.Field>
         <Form.Field>
           <label htmlFor="title">Title</label>
-          <input name="title" {...titleInput} />
+          <input data-cy="title-input" name="title" {...titleInput} />
         </Form.Field>
         <Form.Field>
           <label htmlFor="url">Url</label>
-          <input name="url" {...urlInput} />
+          <input data-cy="url-input" name="url" {...urlInput} />
         </Form.Field>
-        <Button type="submit">Create</Button>
-        <Button type="reset">reset</Button>
+        <Button type="submit" data-cy="create-blog-button">
+          Create
+        </Button>
+        <Button type="reset" data-cy="reset-form-button">
+          reset
+        </Button>
       </Form>
     </>
   )

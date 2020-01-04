@@ -15,10 +15,18 @@ const Togglable = ({ buttonLabel, children }) => {
   return (
     <div>
       <div>
-        <Button style={hideWhenVisible} onClick={toggleVisibility}>
+        <Button
+          style={hideWhenVisible}
+          onClick={toggleVisibility}
+          data-cy="show-form-button"
+        >
           {buttonLabel}
         </Button>
-        <Button style={showWhenVisible} onClick={toggleVisibility}>
+        <Button
+          style={showWhenVisible}
+          onClick={toggleVisibility}
+          data-cy="hide-form-button"
+        >
           Hide create form
         </Button>
       </div>

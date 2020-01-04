@@ -12,7 +12,7 @@ const Toast = ({ level, text }) => {
       error={level === messageLevel.ERROR}
       info={level === messageLevel.INFO}
     >
-      <p>{text}</p>
+      <p data-cy="toast">{text}</p>
     </Message>
   )
 }

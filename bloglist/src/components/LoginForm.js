@@ -32,6 +32,7 @@ const LoginForm = ({ loginUserAction, showMessageAction }) => {
         <Form.Input
           fluid
           icon="user"
+          data-cy="username-input"
           iconPosition="left"
           placeholder="Username"
           {...usernameInput}
@@ -39,12 +40,15 @@ const LoginForm = ({ loginUserAction, showMessageAction }) => {
         <Form.Input
           fluid
           icon="lock"
+          data-cy="password-input"
           iconPosition="left"
           placeholder="Password"
           {...passwordInput}
         />
       </Form.Field>
-      <Button type="submit">login</Button>
+      <Button type="submit" data-cy="login-button">
+        login
+      </Button>
     </Form>
   )
 }
